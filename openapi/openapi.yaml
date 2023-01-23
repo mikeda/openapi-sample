@@ -1,0 +1,65 @@
+openapi: "3.0.3"
+info:
+  title: Mikeda Blog
+  version: 0.0.1
+servers:
+  - url: http://localhost:9000
+paths:
+  /articles:
+    get:
+      summary: 記事一覧
+      operationId: listArticles
+      responses:
+        "200":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/article"
+    post:
+      summary: 記事投稿
+      operationId: createArticle
+      parameters:
+        - name: id
+          in: path
+          description: 記事ID
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/articleCreateParams"
+      responses:
+        "201":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/article"
+components:
+  schemas:
+    article:
+      type: object
+      required:
+        - id
+        - title
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+    articleCreateParams:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        content:
+          type: string
