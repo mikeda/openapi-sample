@@ -1,0 +1,108 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "Mikeda Blog",
+    "version" : "0.0.1"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:9000"
+  } ],
+  "paths" : {
+    "/articles" : {
+      "get" : {
+        "operationId" : "listArticles",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/article"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "ok"
+          }
+        },
+        "summary" : "記事一覧",
+        "x-accepts" : "application/json"
+      },
+      "post" : {
+        "operationId" : "createArticle",
+        "parameters" : [ {
+          "description" : "記事ID",
+          "explode" : false,
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/articleCreateParams"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/article"
+                }
+              }
+            },
+            "description" : "ok"
+          }
+        },
+        "summary" : "記事投稿",
+        "x-content-type" : "application/json",
+        "x-accepts" : "application/json"
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "article" : {
+        "example" : {
+          "id" : 0,
+          "title" : "title",
+          "content" : "content"
+        },
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "content" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "id", "title" ],
+        "type" : "object"
+      },
+      "articleCreateParams" : {
+        "properties" : {
+          "title" : {
+            "type" : "string"
+          },
+          "content" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "title" ],
+        "type" : "object"
+      }
+    }
+  }
+}
