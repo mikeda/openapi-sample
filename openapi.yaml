@@ -7,11 +7,13 @@ servers:
 tags:
   - name: Article
     description: 記事
+  - name: AdminArticle
+    description: 記事(管理画面)
 paths:
   /articles:
     get:
       summary: 記事一覧
-      operationId: listArticles
+      operationId: getArticles
       tags:
         - Article
       responses:
@@ -23,23 +25,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/article"
-    post:
-      summary: 記事作成
-      operationId: createArticle
-      tags:
-        - Article
-      requestBody:
-        content:
-          "application/json":
-            schema:
-              $ref: "#/components/schemas/articleCreateParams"
-      responses:
-        "201":
-          description: ok
-          content:
-            "application/json":
-              schema:
-                $ref: "#/components/schemas/article"
   /articles/{id}:
     parameters:
       - name: id
@@ -60,11 +45,51 @@ paths:
             "application/json":
               schema:
                 $ref: "#/components/schemas/article"
+  /admin/articles:
+    get:
+      summary: 記事一覧
+      operationId: getAdminArticles
+      tags:
+        - AdminArticle
+      responses:
+        "200":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/article"
+    post:
+      summary: 記事作成
+      operationId: createArticle
+      tags:
+        - AdminArticle
+      requestBody:
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/articleCreateParams"
+      responses:
+        "201":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/article"
+  /admina/articles/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: 記事ID
+        required: true
+        schema:
+          type: integer
     put:
       summary: 記事更新
       operationId: updateArticle
       tags:
-        - Article
+        - AdminArticle
       responses:
         "200":
           description: ok
@@ -76,7 +101,7 @@ paths:
       summary: 記事削除
       operationId: deleteArticle
       tags:
-        - Article
+        - AdminArticle
       responses:
         "200":
           description: ok

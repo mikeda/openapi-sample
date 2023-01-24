@@ -1,4 +1,4 @@
-package apimodels;
+package apimodels.media;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.*;
@@ -7,11 +7,16 @@ import javax.validation.*;
 import java.util.Objects;
 import javax.validation.constraints.*;
 /**
- * ArticleCreateParams
+ * Article
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T00:25:45.213559Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T13:21:54.059164Z[Etc/UTC]")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
-public class ArticleCreateParams   {
+public class Article   {
+  @JsonProperty("id")
+  @NotNull
+
+  private Integer id;
+
   @JsonProperty("title")
   @NotNull
 
@@ -21,7 +26,24 @@ public class ArticleCreateParams   {
   
   private String content;
 
-  public ArticleCreateParams title(String title) {
+  public Article id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public Article title(String title) {
     this.title = title;
     return this;
   }
@@ -38,7 +60,7 @@ public class ArticleCreateParams   {
     this.title = title;
   }
 
-  public ArticleCreateParams content(String content) {
+  public Article content(String content) {
     this.content = content;
     return this;
   }
@@ -64,22 +86,24 @@ public class ArticleCreateParams   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ArticleCreateParams articleCreateParams = (ArticleCreateParams) o;
-    return Objects.equals(title, articleCreateParams.title) &&
-        Objects.equals(content, articleCreateParams.content);
+    Article article = (Article) o;
+    return Objects.equals(id, article.id) &&
+        Objects.equals(title, article.title) &&
+        Objects.equals(content, article.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, content);
+    return Objects.hash(id, title, content);
   }
 
   @SuppressWarnings("StringBufferReplaceableByString")
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ArticleCreateParams {\n");
+    sb.append("class Article {\n");
     
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");

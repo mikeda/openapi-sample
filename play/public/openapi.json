@@ -10,11 +10,14 @@
   "tags" : [ {
     "description" : "記事",
     "name" : "Article"
+  }, {
+    "description" : "記事(管理画面)",
+    "name" : "AdminArticle"
   } ],
   "paths" : {
     "/articles" : {
       "get" : {
-        "operationId" : "listArticles",
+        "operationId" : "getArticles",
         "responses" : {
           "200" : {
             "content" : {
@@ -33,66 +36,9 @@
         "summary" : "記事一覧",
         "tags" : [ "Article" ],
         "x-accepts" : "application/json"
-      },
-      "post" : {
-        "operationId" : "createArticle",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/articleCreateParams"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "201" : {
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/article"
-                }
-              }
-            },
-            "description" : "ok"
-          }
-        },
-        "summary" : "記事作成",
-        "tags" : [ "Article" ],
-        "x-content-type" : "application/json",
-        "x-accepts" : "application/json"
       }
     },
     "/articles/{id}" : {
-      "delete" : {
-        "operationId" : "deleteArticle",
-        "parameters" : [ {
-          "description" : "記事ID",
-          "explode" : false,
-          "in" : "path",
-          "name" : "id",
-          "required" : true,
-          "schema" : {
-            "type" : "integer"
-          },
-          "style" : "simple"
-        } ],
-        "responses" : {
-          "200" : {
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/article"
-                }
-              }
-            },
-            "description" : "ok"
-          }
-        },
-        "summary" : "記事削除",
-        "tags" : [ "Article" ],
-        "x-accepts" : "application/json"
-      },
       "get" : {
         "operationId" : "getArticle",
         "parameters" : [ {
@@ -121,6 +67,88 @@
         "summary" : "記事",
         "tags" : [ "Article" ],
         "x-accepts" : "application/json"
+      }
+    },
+    "/admin/articles" : {
+      "get" : {
+        "operationId" : "getAdminArticles",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/article"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "ok"
+          }
+        },
+        "summary" : "記事一覧",
+        "tags" : [ "AdminArticle" ],
+        "x-accepts" : "application/json"
+      },
+      "post" : {
+        "operationId" : "createArticle",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/articleCreateParams"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/article"
+                }
+              }
+            },
+            "description" : "ok"
+          }
+        },
+        "summary" : "記事作成",
+        "tags" : [ "AdminArticle" ],
+        "x-content-type" : "application/json",
+        "x-accepts" : "application/json"
+      }
+    },
+    "/admina/articles/{id}" : {
+      "delete" : {
+        "operationId" : "deleteArticle",
+        "parameters" : [ {
+          "description" : "記事ID",
+          "explode" : false,
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/article"
+                }
+              }
+            },
+            "description" : "ok"
+          }
+        },
+        "summary" : "記事削除",
+        "tags" : [ "AdminArticle" ],
+        "x-accepts" : "application/json"
       },
       "put" : {
         "operationId" : "updateArticle",
@@ -148,7 +176,7 @@
           }
         },
         "summary" : "記事更新",
-        "tags" : [ "Article" ],
+        "tags" : [ "AdminArticle" ],
         "x-accepts" : "application/json"
       }
     }

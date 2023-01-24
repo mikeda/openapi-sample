@@ -1,7 +1,7 @@
-package controllers;
+package controllers.media;
 
-import apimodels.Article;
-import apimodels.ArticleCreateParams;
+import apimodels.media.Article;
+import apimodels.media.ArticleCreateParams;
 
 import play.mvc.Http;
 import java.util.List;
@@ -11,8 +11,8 @@ import java.util.LinkedHashSet;
 import java.io.FileInputStream;
 import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T00:25:45.213559Z[Etc/UTC]")
-public class ArticleApiControllerImp extends ArticleApiControllerImpInterface {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T13:21:54.059164Z[Etc/UTC]")
+public class AdminArticleApiControllerImp extends AdminArticleApiControllerImpInterface {
     @Override
     public Article createArticle(Http.Request request, ArticleCreateParams articleCreateParams) throws Exception {
         //Do your magic!!!
@@ -26,13 +26,7 @@ public class ArticleApiControllerImp extends ArticleApiControllerImpInterface {
     }
 
     @Override
-    public Article getArticle(Http.Request request, Integer id) throws Exception {
-        //Do your magic!!!
-        return new Article();
-    }
-
-    @Override
-    public List<Article> listArticles(Http.Request request) throws Exception {
+    public List<Article> getAdminArticles(Http.Request request) throws Exception {
         //Do your magic!!!
         return new ArrayList<Article>();
     }

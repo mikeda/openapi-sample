@@ -1,7 +1,7 @@
-package controllers;
+package controllers.media;
 
-import apimodels.Article;
-import apimodels.ArticleCreateParams;
+import apimodels.media.Article;
+import apimodels.media.ArticleCreateParams;
 
 import com.google.inject.Inject;
 import com.typesafe.config.Config;
@@ -22,7 +22,7 @@ import play.libs.Files.TemporaryFile;
 import javax.validation.constraints.*;
 
 @SuppressWarnings("RedundantThrows")
-public abstract class ArticleApiControllerImpInterface {
+public abstract class AdminArticleApiControllerImpInterface {
     @Inject private Config configuration;
     @Inject private SecurityAPIUtils securityAPIUtils;
     private ObjectMapper mapper = new ObjectMapper();
@@ -57,23 +57,8 @@ public abstract class ArticleApiControllerImpInterface {
 
     public abstract Article deleteArticle(Http.Request request, Integer id) throws Exception;
 
-    public Result getArticleHttp(Http.Request request, Integer id) throws Exception {
-        Article obj = getArticle(request, id);
-
-        if (configuration.getBoolean("useOutputBeanValidation")) {
-            OpenAPIUtils.validate(obj);
-        }
-
-        JsonNode result = mapper.valueToTree(obj);
-
-        return ok(result);
-
-    }
-
-    public abstract Article getArticle(Http.Request request, Integer id) throws Exception;
-
-    public Result listArticlesHttp(Http.Request request) throws Exception {
-        List<Article> obj = listArticles(request);
+    public Result getAdminArticlesHttp(Http.Request request) throws Exception {
+        List<Article> obj = getAdminArticles(request);
 
         if (configuration.getBoolean("useOutputBeanValidation")) {
             for (Article curItem : obj) {
@@ -87,7 +72,7 @@ public abstract class ArticleApiControllerImpInterface {
 
     }
 
-    public abstract List<Article> listArticles(Http.Request request) throws Exception;
+    public abstract List<Article> getAdminArticles(Http.Request request) throws Exception;
 
     public Result updateArticleHttp(Http.Request request, Integer id) throws Exception {
         Article obj = updateArticle(request, id);

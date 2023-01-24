@@ -1,7 +1,7 @@
-package controllers;
+package controllers.media;
 
-import apimodels.Article;
-import apimodels.ArticleCreateParams;
+import apimodels.media.Article;
+import apimodels.media.ArticleCreateParams;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
@@ -24,14 +24,14 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T00:25:45.213559Z[Etc/UTC]")
-public class ArticleApiController extends Controller {
-    private final ArticleApiControllerImpInterface imp;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T13:21:54.059164Z[Etc/UTC]")
+public class AdminArticleApiController extends Controller {
+    private final AdminArticleApiControllerImpInterface imp;
     private final ObjectMapper mapper;
     private final Config configuration;
 
     @Inject
-    private ArticleApiController(Config configuration, ArticleApiControllerImpInterface imp) {
+    private AdminArticleApiController(Config configuration, AdminArticleApiControllerImpInterface imp) {
         this.imp = imp;
         mapper = new ObjectMapper();
         this.configuration = configuration;
@@ -58,13 +58,8 @@ public class ArticleApiController extends Controller {
     }
 
     @ApiAction
-    public Result getArticle(Http.Request request, Integer id) throws Exception {
-        return imp.getArticleHttp(request, id);
-    }
-
-    @ApiAction
-    public Result listArticles(Http.Request request) throws Exception {
-        return imp.listArticlesHttp(request);
+    public Result getAdminArticles(Http.Request request) throws Exception {
+        return imp.getAdminArticlesHttp(request);
     }
 
     @ApiAction

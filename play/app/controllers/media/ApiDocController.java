@@ -1,4 +1,4 @@
-package controllers;
+package controllers.media;
 
 import javax.inject.*;
 import play.mvc.*;
