@@ -7,7 +7,7 @@ public class Module extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(DefaultApiControllerImpInterface.class).to(DefaultApiControllerImp.class);
+        bind(ArticleApiControllerImpInterface.class).to(ArticleApiControllerImp.class);
         bind(SecurityAPIUtils.class);
     }
 }

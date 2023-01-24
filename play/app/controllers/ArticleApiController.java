@@ -24,21 +24,21 @@ import com.typesafe.config.Config;
 
 import openapitools.OpenAPIUtils.ApiAction;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-23T17:32:40.131544Z[Etc/UTC]")
-public class DefaultApiController extends Controller {
-    private final DefaultApiControllerImpInterface imp;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T00:25:45.213559Z[Etc/UTC]")
+public class ArticleApiController extends Controller {
+    private final ArticleApiControllerImpInterface imp;
     private final ObjectMapper mapper;
     private final Config configuration;
 
     @Inject
-    private DefaultApiController(Config configuration, DefaultApiControllerImpInterface imp) {
+    private ArticleApiController(Config configuration, ArticleApiControllerImpInterface imp) {
         this.imp = imp;
         mapper = new ObjectMapper();
         this.configuration = configuration;
     }
 
     @ApiAction
-    public Result createArticle(Http.Request request, Integer id) throws Exception {
+    public Result createArticle(Http.Request request) throws Exception {
         JsonNode nodearticleCreateParams = request.body().asJson();
         ArticleCreateParams articleCreateParams;
         if (nodearticleCreateParams != null) {
@@ -49,12 +49,27 @@ public class DefaultApiController extends Controller {
         } else {
             articleCreateParams = null;
         }
-        return imp.createArticleHttp(request, id, articleCreateParams);
+        return imp.createArticleHttp(request, articleCreateParams);
+    }
+
+    @ApiAction
+    public Result deleteArticle(Http.Request request, Integer id) throws Exception {
+        return imp.deleteArticleHttp(request, id);
+    }
+
+    @ApiAction
+    public Result getArticle(Http.Request request, Integer id) throws Exception {
+        return imp.getArticleHttp(request, id);
     }
 
     @ApiAction
     public Result listArticles(Http.Request request) throws Exception {
         return imp.listArticlesHttp(request);
+    }
+
+    @ApiAction
+    public Result updateArticle(Http.Request request, Integer id) throws Exception {
+        return imp.updateArticleHttp(request, id);
     }
 
 }

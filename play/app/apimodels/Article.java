@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 /**
  * Article
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-23T17:32:40.131544Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T00:25:45.213559Z[Etc/UTC]")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class Article   {
   @JsonProperty("id")

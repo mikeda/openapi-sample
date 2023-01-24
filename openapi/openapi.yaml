@@ -4,11 +4,16 @@ info:
   version: 0.0.1
 servers:
   - url: http://localhost:9000
+tags:
+  - name: Article
+    description: 記事
 paths:
   /articles:
     get:
       summary: 記事一覧
       operationId: listArticles
+      tags:
+        - Article
       responses:
         "200":
           description: ok
@@ -19,15 +24,10 @@ paths:
                 items:
                   $ref: "#/components/schemas/article"
     post:
-      summary: 記事投稿
+      summary: 記事作成
       operationId: createArticle
-      parameters:
-        - name: id
-          in: path
-          description: 記事ID
-          required: true
-          schema:
-            type: integer
+      tags:
+        - Article
       requestBody:
         content:
           "application/json":
@@ -35,6 +35,50 @@ paths:
               $ref: "#/components/schemas/articleCreateParams"
       responses:
         "201":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/article"
+  /articles/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: 記事ID
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: 記事
+      operationId: getArticle
+      tags:
+        - Article
+      responses:
+        "200":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/article"
+    put:
+      summary: 記事更新
+      operationId: updateArticle
+      tags:
+        - Article
+      responses:
+        "200":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/article"
+    delete:
+      summary: 記事削除
+      operationId: deleteArticle
+      tags:
+        - Article
+      responses:
+        "200":
           description: ok
           content:
             "application/json":

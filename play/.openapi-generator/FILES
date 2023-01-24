@@ -5,9 +5,9 @@ app/Module.java
 app/apimodels/Article.java
 app/apimodels/ArticleCreateParams.java
 app/controllers/ApiDocController.java
-app/controllers/DefaultApiController.java
-app/controllers/DefaultApiControllerImp.java
-app/controllers/DefaultApiControllerImpInterface.java
+app/controllers/ArticleApiController.java
+app/controllers/ArticleApiControllerImp.java
+app/controllers/ArticleApiControllerImpInterface.java
 app/openapitools/ApiCall.java
 app/openapitools/ErrorHandler.java
 app/openapitools/OpenAPIUtils.java

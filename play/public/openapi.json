@@ -7,6 +7,10 @@
   "servers" : [ {
     "url" : "http://localhost:9000"
   } ],
+  "tags" : [ {
+    "description" : "記事",
+    "name" : "Article"
+  } ],
   "paths" : {
     "/articles" : {
       "get" : {
@@ -27,21 +31,11 @@
           }
         },
         "summary" : "記事一覧",
+        "tags" : [ "Article" ],
         "x-accepts" : "application/json"
       },
       "post" : {
         "operationId" : "createArticle",
-        "parameters" : [ {
-          "description" : "記事ID",
-          "explode" : false,
-          "in" : "path",
-          "name" : "id",
-          "required" : true,
-          "schema" : {
-            "type" : "integer"
-          },
-          "style" : "simple"
-        } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -63,8 +57,98 @@
             "description" : "ok"
           }
         },
-        "summary" : "記事投稿",
+        "summary" : "記事作成",
+        "tags" : [ "Article" ],
         "x-content-type" : "application/json",
+        "x-accepts" : "application/json"
+      }
+    },
+    "/articles/{id}" : {
+      "delete" : {
+        "operationId" : "deleteArticle",
+        "parameters" : [ {
+          "description" : "記事ID",
+          "explode" : false,
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/article"
+                }
+              }
+            },
+            "description" : "ok"
+          }
+        },
+        "summary" : "記事削除",
+        "tags" : [ "Article" ],
+        "x-accepts" : "application/json"
+      },
+      "get" : {
+        "operationId" : "getArticle",
+        "parameters" : [ {
+          "description" : "記事ID",
+          "explode" : false,
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/article"
+                }
+              }
+            },
+            "description" : "ok"
+          }
+        },
+        "summary" : "記事",
+        "tags" : [ "Article" ],
+        "x-accepts" : "application/json"
+      },
+      "put" : {
+        "operationId" : "updateArticle",
+        "parameters" : [ {
+          "description" : "記事ID",
+          "explode" : false,
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/article"
+                }
+              }
+            },
+            "description" : "ok"
+          }
+        },
+        "summary" : "記事更新",
+        "tags" : [ "Article" ],
         "x-accepts" : "application/json"
       }
     }
