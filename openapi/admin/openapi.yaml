@@ -1,14 +1,13 @@
+x-project-name: admin
 openapi: "3.0.3"
 info:
-  title: Mikeda Blog
+  title: Sample Admin
   version: 0.0.1
 servers:
   - url: http://localhost:9000
 tags:
   - name: Article
     description: 記事
-  - name: AdminArticle
-    description: 記事(管理画面)
 paths:
   /articles:
     get:
@@ -25,46 +24,11 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/article"
-  /articles/{id}:
-    parameters:
-      - name: id
-        in: path
-        description: 記事ID
-        required: true
-        schema:
-          type: integer
-    get:
-      summary: 記事
-      operationId: getArticle
-      tags:
-        - Article
-      responses:
-        "200":
-          description: ok
-          content:
-            "application/json":
-              schema:
-                $ref: "#/components/schemas/article"
-  /admin/articles:
-    get:
-      summary: 記事一覧
-      operationId: getAdminArticles
-      tags:
-        - AdminArticle
-      responses:
-        "200":
-          description: ok
-          content:
-            "application/json":
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/article"
     post:
       summary: 記事作成
       operationId: createArticle
       tags:
-        - AdminArticle
+        - Article
       requestBody:
         content:
           "application/json":
@@ -77,7 +41,7 @@ paths:
             "application/json":
               schema:
                 $ref: "#/components/schemas/article"
-  /admina/articles/{id}:
+  /articles/{id}:
     parameters:
       - name: id
         in: path
@@ -89,7 +53,7 @@ paths:
       summary: 記事更新
       operationId: updateArticle
       tags:
-        - AdminArticle
+        - Article
       responses:
         "200":
           description: ok
@@ -101,7 +65,7 @@ paths:
       summary: 記事削除
       operationId: deleteArticle
       tags:
-        - AdminArticle
+        - Article
       responses:
         "200":
           description: ok

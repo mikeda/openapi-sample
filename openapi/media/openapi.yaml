@@ -1,0 +1,69 @@
+x-project-name: media
+openapi: "3.0.3"
+info:
+  title: Sample Media
+  version: 0.0.1
+servers:
+  - url: http://localhost:9000
+tags:
+  - name: Article
+    description: 記事
+paths:
+  /articles:
+    get:
+      summary: 記事一覧
+      operationId: getArticles
+      tags:
+        - Article
+      responses:
+        "200":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/article"
+  /articles/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: 記事ID
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: 記事
+      operationId: getArticle
+      tags:
+        - Article
+      responses:
+        "200":
+          description: ok
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/article"
+components:
+  schemas:
+    article:
+      type: object
+      required:
+        - id
+        - title
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+    articleCreateParams:
+      type: object
+      required:
+        - title
+      properties:
+        title:
+          type: string
+        content:
+          type: string
