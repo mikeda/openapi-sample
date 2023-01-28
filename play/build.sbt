@@ -1,8 +1,25 @@
-name := """openapi-java-playframework"""
+name := """app"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+lazy val common = (project in file("modules/common"))
+  .enablePlugins(PlayJava)
+
+lazy val media = (project in file("modules/media"))
+  .enablePlugins(PlayJava)
+  .dependsOn(common)
+  .aggregate(common)
+
+lazy val admin = (project in file("modules/admin"))
+  .enablePlugins(PlayJava)
+  .dependsOn(common)
+  .aggregate(common)
+
+lazy val main = (project in file("."))
+  .enablePlugins(PlayJava)
+  .dependsOn(common, media, admin)
+  .aggregate(common, media, admin)
+
 
 scalaVersion := "2.12.6"
 

@@ -1,13 +1,12 @@
-import com.google.inject.AbstractModule;
+package admin.controllers;
 
-import controllers.media.*;
+import com.google.inject.AbstractModule;
 import openapitools.SecurityAPIUtils;
 
 public class Module extends AbstractModule {
 
     @Override
     protected void configure() {
-        bind(AdminArticleApiControllerImpInterface.class).to(AdminArticleApiControllerImp.class);
         bind(ArticleApiControllerImpInterface.class).to(ArticleApiControllerImp.class);
         bind(SecurityAPIUtils.class);
     }

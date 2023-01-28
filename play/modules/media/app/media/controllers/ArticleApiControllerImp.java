@@ -1,15 +1,11 @@
-package controllers.media;
+package media.controllers;
 
-import apimodels.media.Article;
+import media.apimodels.Article;
 
 import play.mvc.Http;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.io.FileInputStream;
-import play.libs.Files.TemporaryFile;
-import javax.validation.constraints.*;
+
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2023-01-24T13:21:54.059164Z[Etc/UTC]")
 public class ArticleApiControllerImp extends ArticleApiControllerImpInterface {
     @Override

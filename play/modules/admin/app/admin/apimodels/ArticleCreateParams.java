@@ -1,11 +1,9 @@
-package apimodels.media;
+package admin.apimodels;
 
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.*;
-import java.util.Set;
-import javax.validation.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
-import javax.validation.constraints.*;
 /**
  * ArticleCreateParams
  */

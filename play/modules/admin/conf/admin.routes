@@ -1,0 +1,4 @@
+POST     /articles                     admin.controllers.ArticleApiController.createArticle(request: Request)
+DELETE   /articles/:id                     admin.controllers.ArticleApiController.deleteArticle(request: Request, id: Integer)
+GET     /articles                     admin.controllers.ArticleApiController.getArticles(request: Request)
+PUT     /articles/:id                     admin.controllers.ArticleApiController.updateArticle(request: Request, id: Integer)
